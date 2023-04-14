@@ -1,0 +1,45 @@
+After creation the dll file you have to connect this library to ANSYS:
+
+1. Create environment variable named ANS_USER_PATH
+
+My Computer->Properties->Advanced system settings->Advanced
+
+    On the tab, click on the button:
+
+Environment Variables->System Variables->New
+
+2. In the variable value field, specify the path to the folder where library is located. Use only latin characters in the path.
+
+    For example: C:\Username\......\Usermatlib
+   
+3. if everything is connected correctly in the ANSYS output window at startup there will be a line 
+
+"User link path <ANS_USER_PATH>: *path to your folder*"
+
+4 After launching the ANSYS, create an user material 
+
+Preprocessor->Material Props->Material models
+
+5. In the drop-down list of materials, select
+
+Structural->Specialized Materials->User material options->user material
+
+    And add cells. There should be 5 properties in total. Of which:
+
+С1 - Young modulus
+C2 - Puasson ratio
+С3 - Yelding stress 
+C4 - Strain hardening amplitude
+C5 - Strain hardening exponent
+
+6. Allocate an array for user data, where we will save the plastic strains and current yeld stress. To do this, we again call the properties window and again reach the User material options tab:
+
+Preprocessor->Material Props->Material models->Structural->Specialized Materials->User material options
+
+7. This time select "State Variables" and create 8 lines.
+
+That's all. Further we work as with the usual scheme.
+
+PS: In order for custom arrays to be available for display, before starting to solve in the solver (/SOL), on the ANSYS command line, write the line
+
+OUTRES,SVAR,ALL
