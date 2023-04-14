@@ -1,0 +1,79 @@
+FINISH
+/clear
+!*************************** MECHANICAL PROPERTIES
+YOUNG   =100000            !Young modulus
+XNUE    =0.3               !Puasson ratio
+SYELD   =300               !Yelding stress 
+ALFA    =0.8               !Strain hardening amplitude
+SHE     =5                 !Strain hardening exponent
+
+/PREP7
+
+!Add element type and set plain strain option
+ET,1,PLANE182    
+KEYOPT,1,1,0
+KEYOPT,1,3,2
+KEYOPT,1,6,0
+!
+!Add user stative array
+TB,STAT,1,1,8, 
+TBTEMP,0
+TBDATA,,0,0,0,0,0,0  
+TBDATA,,0,0,0,0,0,0 
+!
+!Set user material and add material prorerties   
+TB,USER,1,1,5,  
+TBTEMP,0
+TBDATA,,YOUNG,XNUE,SYELD,ALFA,SHE,
+
+!*************************** GEOMETRY
+BLC5, , ,0.2,0.4
+CYL4, , ,0.02   
+ASBA,       1,       2  
+
+WPSTYLE,,,,,,,,1
+WPCSYS,-1,0 
+wpro,,,90.000000
+ASBW,       ALL   
+wpro,,90.000000,
+ASBW,ALL   
+WPCSYS,-1,0
+
+!*************************** MESHING
+SMRT,1  
+AMESH,ALL  
+
+!*************************** LOADS
+FLST,2,2,3,ORDE,2   
+FITEM,2,9   
+FITEM,2,-10 
+DK,P51X, , , ,0,UX, , , , , ,  
+
+FLST,2,2,4,ORDE,2   
+FITEM,2,9   
+FITEM,2,13  
+DL,P51X, ,UY,   
+
+FLST,2,2,4,ORDE,2   
+FITEM,2,10  
+FITEM,2,14  
+DL,P51X, ,UY,0.02  
+
+!*************************** SOLUTION
+
+FINISH 
+/SOL
+OUTRES,ALL,LAST
+OUTRES,SVAR,LAST
+time,1
+autots,1
+nsubst,10,100,10
+SOLVE
+
+!*************************** RESULTS
+FINISH 
+/POST1
+SET,LAST
+PLNSOL, S,EQV, 0,1.0 
+/REPLOT 
+
