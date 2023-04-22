@@ -244,16 +244,10 @@ c*************************************************************************
 c
 c      ncomp   6   for 3D  (nshear=3)
 c      ncomp   4   for plane strain or axisymmetric (nShear = 1)
-c      ncomp   3   for plane stress (nShear = 1)
-c      ncomp   3   for 3d beam      (nShear = 2)
-c      ncomp   1   for 1D (nShear = 0)
 c
 c      stresss and strains, plastic strain vectors
 c          11, 22, 33, 12, 23, 13    for 3D
 c          11, 22, 33, 12            for plane strain or axisymmetry
-c          11, 22, 12                for plane stress
-c          11, 13, 12                for 3d beam
-c          11                        for 1D
 c
 c      material jacobian matrix
 c        3D
