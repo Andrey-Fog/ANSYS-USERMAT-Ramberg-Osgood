@@ -177,7 +177,6 @@ c         according to the stress state such as 3D, plane strain
 c         and axisymmetry.
 c         
 c*************************************************************************
-c
 c     input arguments
 c     ===============
 c      matId     (int,sc,i)               material #
