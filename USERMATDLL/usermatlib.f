@@ -356,6 +356,7 @@ c
 c*************************************************************************
 c
       keycut   = 0
+c     get eqv plastic strain from previous iteration      
       pleq_t   = ustatev(1)
       
 c *** get Young's modulus and Poisson's ratio, initial yield stress and the hardening parameters
