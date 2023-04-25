@@ -12,7 +12,6 @@ Preprocessor definitions: 		/DNOSTDCALL /DARGTRAIL /DPCWIN64_SYS /DPCWINX64_SYS 
 Debug information Format: 		Full (/debug:full)
 Preprocess Source file: 		Yes (/fpp)
 Preprocessor Definitions to fpp only: 	Yes (/noD)
-Runtime library: 			Debug Multithread DLL (/libs:dll /threads /dbglibs)
 Use Portlib Library: 			Yes (/4Yportlib)
 
 LINKER SETTINGS
@@ -21,12 +20,12 @@ Supress startup banner: 		Yes (/nologo)
 Additional library Directories: 	C:\Program Files\ANSYS Inc\v***\ansys\custom\lib\winx64
 Additional dependencies: 		ANSYS.LIB
 Generate debug info: 			Yes (/DEBUG)
-SubSystem: 				Windows (/SUBSYSTEM:WINDOWS)
-Target Environment: 			Microsoft Windows 64-bit on Itanium (/env ia64)
-
 
 *** - your version of ANSYS
 All other settings by default. Its allows me connect to ANSYS for debugging.
+
+--------------------------///////--------------------------
+
 After creation the dll file you have to connect this library to ANSYS:
 
 1. Create environment variable named ANS_USER_PATH
@@ -61,15 +60,6 @@ C2 - Puasson ratio
 C4 - Strain hardening amplitude
 C5 - Strain hardening exponent
 
-6. Allocate an array for user data, where we will save the plastic strains and current yeld stress. To do this, we again call the properties window and again reach the User material options tab:
-
-Preprocessor->Material Props->Material models->Structural->Specialized Materials->User material options
-
-7. This time select "State Variables" and create 8 lines.
-
 That's all. Further we work as with the usual scheme.
 
-PS: In order for custom arrays to be available for display, before starting to solve in the solver (/SOL), on the ANSYS command line, write the line
-
-OUTRES,SVAR,ALL
 
