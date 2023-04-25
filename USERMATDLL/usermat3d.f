@@ -167,7 +167,6 @@ c      dfds     (dp,ar(6  ),l)            derivative of the yield function
 c      JM       (dp,ar(6,6),l)            2D matrix for a 4 order tensor
 c      pEl      (dp,sc     ,l)            hydrostatic pressure stress
 c      qEl      (dp,sc     ,l)            von-mises stress
-c      pleq_t   (dp,sc     ,l)            equivalent plastic strain at beginnig of time increment
 c      pleq     (dp,sc     ,l)            equivalent plastic strain at end of time increment
 c      dpleq    (dp,sc     ,l)            incremental equivalent plastic strain
 c      sigy     (dp,sc     ,l)            current equivalent stress at end of time increment
