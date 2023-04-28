@@ -257,8 +257,8 @@ c *** get initial stress
       i = ncomp
       call get_ElmData ('ISIG', elemId,kDomIntPt, i, sigi)
 c
-c *** calculate the trial stress and
-c     copy elastic moduli dsdeEl to material Jacobian matrix
+c *** calculate the trial stresses and
+c     copy elastic stiffness dsdeEl to material Jacobian matrix
       do i=1,ncomp
          strainEl(i) = Strain(i) + dStrain(i)
          Strainob(i) = Strain(i) + dStrain(i) - epsPl(i)
@@ -272,10 +272,10 @@ c     copy elastic moduli dsdeEl to material Jacobian matrix
 c         sigElp(i) = sigElp(i) + sigi(i)
       end do
 c
-c *** hydrostatic pressure stress
+c *** hydrostatic pressure 
       pEl = -THIRD * (sigElp(1) + sigElp(2) + sigElp(3))
       
-c *** compute the deviatoric stress tensor
+c *** deviatoric stress 
       sigDev(1) = sigElp(1) + pEl
       sigDev(2) = sigElp(2) + pEl
       sigDev(3) = sigElp(3) + pEl
@@ -283,7 +283,7 @@ c *** compute the deviatoric stress tensor
       sigDev(5) = sigElp(5)
       sigDev(6) = sigElp(6)
 c
-c *** compute von-mises and equivalent elastic stress
+c *** von-mises and equivalent elastic stresses
       qEl = 
      &  sigDev(1) * sigDev(1)+sigDev(2) * sigDev(2)+
      &  sigDev(3) * sigDev(3)+
@@ -292,7 +292,7 @@ c *** compute von-mises and equivalent elastic stress
       qEl = sqrt( ONEHALF * qEl)
       sigeqv = qEl
 c
-c *** compute equivalent strian
+c *** equivalent strian
       epseqv = 
      &         (((strainEl(1)-strainEl(2))**2+(strainEl(2)-
      &         strainEl(3))**2+(strainEl(3)-strainEl(1))**2 +
@@ -325,11 +325,11 @@ c *** calculate the actual stress
             sigeqv = x  
       end if
 c
-c *** compute current yield stress
+c *** current yield stress
       sigy = sigeqv      
       threeOv2qEl = ONEHALF/qEl
 c
-c *** compute derivative of the yield function
+c *** ratio of the yield function
       fratio = qEl / sigy - ONE
 c
       threeOv2qEl = ONEHALF / qEl
@@ -390,7 +390,7 @@ c *** Material Jcobian matrix
 c
       sedEl = ZERO
 c     
-c *** Calculate elastic work
+c *** Elastic work
       DO i = 1 , ncomp
          sedEl = sedEl + stress(i)*(Strain(i)+dStrain(i)-epsPl(i))
       END DO
