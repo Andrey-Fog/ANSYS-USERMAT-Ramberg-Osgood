@@ -75,7 +75,7 @@ That's all. Further we work as with the usual scheme.
 |Preprocessor definitions:| 	 - |	        /DNOSTDCALL /DARGTRAIL /DPCWIN64_SYS /DPCWINX64_SYS /DPCWINNT_SYS /DCADOE_ANSYS /D__EFL /DFORTRAN /auto /c /Fo.\ /MD /W0  |
 |Debug information Format:|		 - |            Full (/debug:full)  |
 |Preprocess Source file:|		 - |            Yes (/fpp)  |
-|Preprocessor Definitions to fpp only:| 	Yes (/noD)  |
+|Preprocessor Definitions to fpp only:| -|	Yes (/noD)  |
 |Use Portlib Library:| 		 - |	            Yes (/4Yportlib)  |
 
 ### LINKER SETTINGS  
